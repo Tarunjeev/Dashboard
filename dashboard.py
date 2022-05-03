@@ -46,7 +46,7 @@ def audience_simple(country):
 @st.cache
 def load_data():
 # - > do not need total
-    df_agg = pd.read_csv('/Users/tarunjuneja/Desktop/YT_Dashboard_St/archive/Aggregated_Metrics_By_Video.csv').iloc[1:,:]
+    df_agg = pd.read_csv('Aggregated_Metrics_By_Video.csv').iloc[1:,:]
     df_agg.columns = ['Video', 'Video title', 'Video pub­lish time', 'Com­ments ad­ded',
            'Shares', 'Dis­likes', 'Likes', 'Sub­scribers lost',
            'Sub­scribers gained', 'RPM(USD)', 'CPM(USD)',
@@ -61,9 +61,9 @@ def load_data():
     df_agg['Engagement_ratio'] = (df_agg['Com­ments ad­ded'] + df_agg['Shares'] + df_agg['Dis­likes'] + df_agg['Likes']) / df_agg.Views
     df_agg['Views / sub gained'] = df_agg['Views'] / df_agg['Sub­scribers gained']
     df_agg.sort_values('Video pub­lish time', ascending = False, inplace = True)
-    df_agg_sub = pd.read_csv('/Users/tarunjuneja/Desktop/YT_Dashboard_St/archive/Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
-    df_comments = pd.read_csv('/Users/tarunjuneja/Desktop/YT_Dashboard_St/archive/Aggregated_Metrics_By_Video.csv')
-    df_time = pd.read_csv('/Users/tarunjuneja/Desktop/YT_Dashboard_St/archive/Video_Performance_Over_Time.csv')
+    df_agg_sub = pd.read_csv('Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
+    df_comments = pd.read_csv('Aggregated_Metrics_By_Video.csv')
+    df_time = pd.read_csv('Video_Performance_Over_Time.csv')
     df_time['Date'] = pd.to_datetime(df_time['Date'])
     return df_agg, df_agg_sub, df_comments, df_time
 
